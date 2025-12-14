@@ -1,7 +1,24 @@
-import React from 'react'
+export default function TranslationList() {
 
-export default function TranslationPanel() {
   return (
-    <div>TranslationPanel</div>
-  )
+    <div className="flex gap-4 w-full max-w-4xl mx-auto p-4">
+
+      <div className="flex-1">
+        <select className="w-full mb-2 p-2 border rounded bg-gray-100">
+          <option>German</option>
+          <option>French</option>
+        </select>
+
+      </div>
+
+
+      <div className="flex-1">
+        <select className="w-full mb-2 p-2 border rounded bg-gray-100">
+          <option>English</option>
+          <option>Spanish</option>
+        </select>
+
+      </div>
+    </div>
+  );
 }
