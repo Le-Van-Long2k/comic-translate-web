@@ -5,8 +5,8 @@ export default function TranslationList() {
 
       <div className="flex-1">
         <select className="w-full mb-2 p-2 border rounded bg-gray-100">
-          <option>German</option>
-          <option>French</option>
+          <option>English</option>
+          <option>Chinese</option>
         </select>
 
       </div>
@@ -14,8 +14,8 @@ export default function TranslationList() {
 
       <div className="flex-1">
         <select className="w-full mb-2 p-2 border rounded bg-gray-100">
+          <option>Vietnamese</option>
           <option>English</option>
-          <option>Spanish</option>
         </select>
 
       </div>
