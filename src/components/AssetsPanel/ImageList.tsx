@@ -1,8 +1,9 @@
-import { X } from "lucide-react";
+import React from "react";
 import { useUploadStore } from "../../store/uploadStore";
 import clsx from "clsx";
+import { X } from "lucide-react";
 
-export default function FilePanel() {
+export default function ImageList() {
   const files = useUploadStore((s) => s.files);
   const selectedFileId = useUploadStore((s) => s.selectedFileId);
   const selectFile = useUploadStore((s) => s.selectFile);
@@ -23,8 +24,8 @@ export default function FilePanel() {
             onClick={() => selectFile(file.id)}
             className={clsx(
               "flex items-center gap-2 text-sm px-2 py-1 rounded cursor-pointer",
-              "hover:bg-gray-100",
-              isSelected && "bg-orange-50 border border-orange-300"
+              "hover:bg-gray-800",
+              isSelected && "bg-gray-800"
             )}
           >
             <img
@@ -35,14 +36,13 @@ export default function FilePanel() {
 
             <span className="truncate flex-1">{file.name}</span>
 
-            {/* Delete button – chỉ hiện khi selected */}
             {isSelected && (
               <button
                 onClick={(e) => {
-                  e.stopPropagation(); // ❗ không trigger select
+                  e.stopPropagation();
                   removeFile(file.id);
                 }}
-                className="text-gray-400 hover:text-red-500"
+                className="hover:text-black"
                 aria-label="Remove file"
               >
                 <X size={14} />
