@@ -1,72 +1,54 @@
-import React, { useRef } from "react";
 import Sidebar from "../components/Toolbar/Sidebar";
 import CanvasArea from "./CanvasArea";
 import AssetsPanel from "./AssetsPanel";
 import TranslationPanel from "./TranslationPanel";
 import PropertiesPanel from "./PropertiesPanel";
 import MainToolbar from "./MainToolbar";
-import { useUploadStore } from "../store/uploadStore";
-import type { UploadedFile } from "../types/file";
+import { Flex, Stack } from "@chakra-ui/react";
 
 function MainPage() {
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const addFiles = useUploadStore((state) => state.addFiles);
-  const openUploadDialog = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = event.target.files;
-    if (!selectedFiles) return;
-
-    const newFiles: UploadedFile[] = Array.from(selectedFiles).map((file) => ({
-      id: crypto.randomUUID(),
-      name: file.name,
-      url: URL.createObjectURL(file),
-      file: file,
-    }));
-
-    addFiles(newFiles);
-  };
   return (
-    <div className="flex flex-row h-screen overflow-hidden">
-      <div className="flex-1">
-        <input
-          ref={fileInputRef}
-          type="file"
-          hidden
-          multiple
-          accept="image/*"
-          onChange={handleFileChange}
-        />
-        <Sidebar onUpload={openUploadDialog}></Sidebar>
-      </div>
-
-      <div className="flex-30 flex flex-col w-full">
-        <div className="flex-1">
+    <Stack
+      w="100vw"
+      h="100vh"
+      direction="row"
+      minW="1300px"
+      minH="600px"
+      overflow="auto"
+    >
+      <Flex
+        flex={1}
+        direction="column"
+        align="stretch"
+        bg="gray.800"
+        justify="flex-start"
+      >
+        <Sidebar></Sidebar>
+      </Flex>
+      <Stack flex={100} direction="column">
+        <Stack flex={5} bg="gray.800" padding="5px" borderRadius="md">
           <MainToolbar></MainToolbar>
-        </div>
+        </Stack>
+        <Stack flex={95} direction="row">
+          <Stack flex={20} direction="column" bg="gray.800">
+            <AssetsPanel></AssetsPanel>
+          </Stack>
 
-        <div className="flex-10">
-          <div className="flex flex-row h-full">
-            <div className="flex-1 bg-gray-500 m-1">
-              <AssetsPanel></AssetsPanel>
-            </div>
-            <div className="flex-5 bg-gray-600 m-1">
-              <CanvasArea></CanvasArea>
-            </div>
-            <div className="flex-2 flex flex-col h-full m-1">
-              <div className="flex-1 bg-gray-700">
-                <TranslationPanel></TranslationPanel>
-              </div>
-              <div className="flex-1 bg-gray-800">
-                <PropertiesPanel></PropertiesPanel>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          <Stack flex={65} direction="column">
+            <CanvasArea></CanvasArea>
+          </Stack>
+
+          <Stack flex={25} direction="column" bg="gray.800">
+            <Stack flex={50} direction="row" padding="1px">
+              <TranslationPanel></TranslationPanel>
+            </Stack>
+            <Stack flex={50} direction="row" padding="1px">
+              <PropertiesPanel></PropertiesPanel>
+            </Stack>
+          </Stack>
+        </Stack>
+      </Stack>
+    </Stack>
   );
 }
 

@@ -1,16 +1,16 @@
-import { RotateCcw, RotateCw } from "lucide-react";
-import React from "react";
+import { HStack, IconButton } from "@chakra-ui/react";
+import { MdOutlineRotateLeft, MdRotateRight } from "react-icons/md";
 
 function BackUpGroup() {
   return (
-    <span>
-      <button className="btn btn-soft btn-circle">
-        <RotateCcw className="mx-3 size-5 inline-block" />
-      </button>
-      <button className="btn btn-soft btn-circle">
-        <RotateCw className="mx-3 size-5 inline-block" />
-      </button>
-    </span>
+    <HStack align="center" justify="center">
+      <IconButton aria-label="Undo" variant="outline" size="lg" rounded="full">
+        <MdOutlineRotateLeft />
+      </IconButton>
+      <IconButton aria-label="Redo" variant="outline" size="lg" rounded="full">
+        <MdRotateRight />
+      </IconButton>
+    </HStack>
   );
 }
 

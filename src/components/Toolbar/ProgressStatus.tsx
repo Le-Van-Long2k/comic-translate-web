@@ -1,18 +1,18 @@
+import { AbsoluteCenter, Box, Progress, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 
 function ProgressStatus() {
   return (
-    <div className="relative w-[75vw]">
-      <progress
-        className="progress progress-info w-full"
-        value="40"
-        max="100"
-      ></progress>
-
-      <span className="absolute inset-0 flex items-center justify-center text-sm font-medium text-info">
-        40%
-      </span>
-    </div>
+    <Stack>
+      <Progress.Root variant="outline" colorPalette="blue">
+        <Progress.Track h="13px">
+          <Progress.Range />
+          <AbsoluteCenter>
+            <Text fontSize="14px">40%</Text>
+          </AbsoluteCenter>
+        </Progress.Track>
+      </Progress.Root>
+    </Stack>
   );
 }
 

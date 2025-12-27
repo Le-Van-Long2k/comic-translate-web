@@ -1,19 +1,19 @@
-import { Bold, Italic, Underline } from "lucide-react";
-import React from "react";
+import { IconButton, Stack } from "@chakra-ui/react";
+import { FaBold, FaItalic, FaUnderline } from "react-icons/fa";
 
 function TextStyles() {
   return (
-    <div className="flex flex-row w-full gap-1 justify-center">
-      <button className="btn btn-square btn-sm flex-1">
-        <Bold />
-      </button>
-      <button className="btn btn-square btn-sm flex-1">
-        <Italic />
-      </button>
-      <button className="btn btn-square btn-sm flex-1">
-        <Underline />
-      </button>
-    </div>
+    <Stack gap="2" justify="space-between" direction="row">
+      <IconButton variant="outline">
+        <FaBold />
+      </IconButton>
+      <IconButton variant="outline">
+        <FaItalic />
+      </IconButton>
+      <IconButton variant="outline">
+        <FaUnderline />
+      </IconButton>
+    </Stack>
   );
 }
 

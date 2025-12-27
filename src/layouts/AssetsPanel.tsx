@@ -1,10 +1,8 @@
-import React from 'react'
-import ImageList from '../components/AssetsPanel/ImageList'
+import React from "react";
+import ImageFileList from "../components/AssetsPanel/ImageFileList";
 
 function AssetsPanel() {
-  return (
-    <ImageList></ImageList>
-  )
+  return <ImageFileList></ImageFileList>;
 }
 
-export default AssetsPanel
+export default AssetsPanel;

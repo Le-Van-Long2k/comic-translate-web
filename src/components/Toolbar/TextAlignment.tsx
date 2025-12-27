@@ -1,19 +1,19 @@
-import { TextAlignCenter, TextAlignEnd, TextAlignStart } from "lucide-react";
-import React from "react";
+import { IconButton, Stack } from "@chakra-ui/react";
+import { FaAlignJustify, FaAlignLeft, FaAlignRight } from "react-icons/fa6";
 
 function TextAlignment() {
   return (
-    <div className="flex flex-row w-full gap-1">
-      <button className="btn btn-square btn-sm flex-1">
-        <TextAlignStart />
-      </button>
-      <button className="btn btn-square btn-sm flex-1">
-        <TextAlignCenter/>
-      </button>
-      <button className="btn btn-square btn-sm flex-1">
-        <TextAlignEnd />
-      </button>
-    </div>
+    <Stack gap="2" justify="space-between" direction="row">
+      <IconButton variant="outline">
+        <FaAlignLeft />
+      </IconButton>
+      <IconButton variant="outline">
+        <FaAlignJustify />
+      </IconButton>
+      <IconButton variant="outline">
+        <FaAlignRight />
+      </IconButton>
+    </Stack>
   );
 }
 

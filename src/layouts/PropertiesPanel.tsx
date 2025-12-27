@@ -3,30 +3,21 @@ import TextSetting from "../components/Toolbar/TextSetting";
 import TextColor from "../components/Toolbar/TextColor";
 import TextAlignment from "../components/Toolbar/TextAlignment";
 import TextStyles from "../components/Toolbar/TextStyles";
+import { Stack } from "@chakra-ui/react";
 
 function PropertiesPanel() {
   return (
-    <div className="flex flex-col w-full h-full justify-center">
-      <div className="flex-1">
+    <Stack direction="column" w="100%" h="100%" p="2px" bg="gray.900">
+      <Stack flex={10}>
         <TextSetting></TextSetting>
-      </div>
-
-      <div className="flex-1 flex flex-row">
-        <div className="flex-1">
-          <TextColor></TextColor>
-        </div>
-        <div className="flex-5 ml-2 mr-1">
-          <TextAlignment></TextAlignment>
-        </div>
-        <div className="flex-5 ml-2 mr-1">
-          <TextStyles></TextStyles>
-        </div>
-      </div>
-
-      <div className="flex-4">
-        
-      </div>
-    </div>
+      </Stack>
+      <Stack flex={10} direction="row" align="center" justify="space-around">
+        <TextColor></TextColor>
+        <TextAlignment></TextAlignment>
+        <TextStyles></TextStyles>
+      </Stack>
+      <Stack flex={80}></Stack>
+    </Stack>
   );
 }
 

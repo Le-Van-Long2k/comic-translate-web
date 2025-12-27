@@ -1,21 +1,34 @@
-import BackUpGroup from '../components/Toolbar/BackUpGroup'
-import ImageProcessGroup from '../components/Toolbar/ImageProcessGroup'
-import StatusGroup from '../components/Toolbar/StatusGroup'
-import ProgressStatus from '../components/Toolbar/ProgressStatus'
+import BackUpGroup from "../components/Toolbar/BackUpGroup";
+import ImageProcessGroup from "../components/Toolbar/ImageProcessGroup";
+import ProgressStatus from "../components/Toolbar/ProgressStatus";
+import { Stack } from "@chakra-ui/react";
+import StatusGroup from "../components/Toolbar/StatusGroup";
+import ModeGroup from "../components/Toolbar/ModeGroup";
 
 function MainToolbar() {
   return (
-    <div className='flex flex-col gap-2 p-2'>
-      <div className='grid grid-cols-3 items-center'>
+    <Stack direction="row">
+      <Stack flex={5}>
         <BackUpGroup></BackUpGroup>
-        <ImageProcessGroup></ImageProcessGroup>
-        <StatusGroup></StatusGroup>
-      </div>
-      <div className="flex justify-center items-center">
-        <ProgressStatus></ProgressStatus>
-      </div>
-    </div>
-  )
+      </Stack>
+      <Stack flex={80} direction="column" ml="20px" mr="20px">
+        <Stack flex={60}>
+          <ImageProcessGroup></ImageProcessGroup>
+        </Stack>
+        <Stack flex={40}>
+          <ProgressStatus></ProgressStatus>
+        </Stack>
+      </Stack>
+      <Stack flex={15} direction="column">
+        <Stack flex={50}>
+          <StatusGroup></StatusGroup>
+        </Stack>
+        <Stack flex={50} bg="gray.900" borderRadius="xl">
+          <ModeGroup></ModeGroup>
+        </Stack>
+      </Stack>
+    </Stack>
+  );
 }
 
-export default MainToolbar
+export default MainToolbar;

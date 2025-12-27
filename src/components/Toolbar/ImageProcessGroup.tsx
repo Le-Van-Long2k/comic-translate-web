@@ -1,16 +1,26 @@
-import React from 'react'
+import { Button, HStack } from "@chakra-ui/react";
+import React from "react";
 
 function ImageProcessGroup() {
   return (
-    <div className="flex justify-center gap-2 items-center">
-      <button className="btn btn-outline btn-info">Detect Text Boxes</button>
-      <button className="btn btn-outline btn-info">Get Translation</button>
-      <button className="btn btn-outline btn-info">Segment Text</button>
-      <button className="btn btn-outline btn-info">Clean Image</button>
-      <button className="btn btn-outline btn-info">Render</button>
-
-      </div>
-  )
+    <HStack justify="center" gap="2">
+      <Button variant="outline" colorPalette="blue">
+        Detect Text Boxes
+      </Button>
+      <Button variant="outline" colorPalette="blue">
+        Get Translation
+      </Button>
+      <Button variant="outline" colorPalette="blue">
+        Segment Text
+      </Button>
+      <Button variant="outline" colorPalette="blue">
+        Clean Image
+      </Button>
+      <Button variant="outline" colorPalette="blue">
+        Render
+      </Button>
+    </HStack>
+  );
 }
 
-export default ImageProcessGroup
+export default ImageProcessGroup;
