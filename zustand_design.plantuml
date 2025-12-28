@@ -1,0 +1,98 @@
+@startuml
+!define RECTANGLE class
+skinparam packageStyle rectangle
+
+' ======================
+' Frontend Package
+' ======================
+package "Frontend" {
+    
+    RECTANGLE ProjectStore {
+        +currentProject
+        +projectsList
+        +loadProject()
+        +createProject()
+        +saveProject()
+    }
+
+    RECTANGLE ImagesStore {
+        +images
+        +selectedImageId
+        +uploadImage()
+        +updateImage()
+        +reorderImages()
+        +history
+    }
+
+    RECTANGLE CanvasStore {
+        +textBoxes
+        +selectedBoxId
+        +addTextBox()
+        +updateTextBox()
+        +deleteTextBox()
+        +undo()
+        +redo()
+        +clear()
+    }
+
+    RECTANGLE ProcessingStore {
+        +isProcessing
+        +currentStep
+        +processImage()
+        +autoProcessAll()
+    }
+
+    RECTANGLE HistoryStore {
+        +pushHistory()
+        +undo()
+        +redo()
+    }
+}
+
+' ======================
+' Backend Package
+' ======================
+package "Backend" {
+    RECTANGLE FastAPI_Backend {
+        +store files (original/clean/output)
+        +process detect/OCR/translate/clean
+        +return project.json / metadata
+    }
+}
+
+' ======================
+' Relations Frontend
+' ======================
+
+ProjectStore --> ImagesStore : hydrate project.json
+ProjectStore --> FastAPI_Backend : load/save project
+
+ImagesStore --> CanvasStore : selectedImageId
+ImagesStore --> ProcessingStore : image processing
+ImagesStore --> HistoryStore : push history
+
+CanvasStore --> HistoryStore : render text & edit
+CanvasStore --> ImagesStore : undo/redo canvas actions
+
+ProcessingStore --> ImagesStore : update images metadata
+ProcessingStore --> FastAPI_Backend : detect/OCR/translate/clean
+
+HistoryStore --> CanvasStore : undo/redo canvas
+HistoryStore --> ImagesStore : undo/redo image state
+
+' ======================
+' Relations Backend
+' ======================
+
+FastAPI_Backend --> ImagesStore : return project.json, processed images
+
+' ======================
+' Auto Mode & Autosave
+' ======================
+ImagesStore --> ProcessingStore : trigger auto process
+ProcessingStore --> CanvasStore : batch processing progress
+ProcessingStore --> HistoryStore : update history per step
+
+ImagesStore --> ProjectStore : debounced autosave
+
+@enduml

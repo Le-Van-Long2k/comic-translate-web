@@ -8,10 +8,10 @@ function ImageProcessGroup() {
         Detect Text Boxes
       </Button>
       <Button variant="outline" colorPalette="blue">
-        Get Translation
+        Segment Text
       </Button>
       <Button variant="outline" colorPalette="blue">
-        Segment Text
+        Get Translation
       </Button>
       <Button variant="outline" colorPalette="blue">
         Clean Image

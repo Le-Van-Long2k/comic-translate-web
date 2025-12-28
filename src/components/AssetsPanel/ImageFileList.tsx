@@ -13,7 +13,7 @@ export default function ImageFileList() {
   }
 
   return (
-    <Stack gap={2} w="100%" h="100%" overflowY="auto">
+    <Stack gap={2} w="100%" h="900px" overflowY="auto">
       {files.map((file) => (
         <ImageFileItem
           key={file.id}
